@@ -9,14 +9,175 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <style>
     *{
         font-family: "Geist", sans-serif;
+        /* background-color: #F8FAFC; */
     }
 </style>
 
 </head>
 <body>
-  <header class="">fghh</header>
+    <header id="dashboard-summary" class="max-w-screen-lg mx-auto pt-8 p-4">
+      <h1 class="text-2xl font-bold mb-6 text-[#002C5C]">Job Application Tracker</h1>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <button type="button" class="stat-card btn flex flex-col h-auto py-4 bg-white border-slate-200 hover:bg-blue-50">
+          <span class="text-sm uppercase tracking-wider text-slate-500">Total</span>
+          <span id="stat-total-count" class="text-2xl font-bold">8</span>
+        </button>
+
+        <button type="button" class="stat-card btn flex flex-col h-auto py-4 bg-white border-slate-200 hover:bg-blue-50">
+          <span class="text-sm uppercase tracking-wider text-slate-500">Interview</span>
+          <span id="stat-interview-count" class="text-2xl font-bold text-[#10B981]">0</span>
+        </button>
+
+        <button type="button" class="stat-card btn flex flex-col h-auto py-4 bg-white border-slate-200 hover:bg-blue-50">
+          <span class="text-sm uppercase tracking-wider text-slate-500">Rejected</span>
+          <span id="stat-rejected-count" class="text-2xl font-bold text-[#EF4444]">0</span>
+        </button>
+      </div>
+    </header>
+
+    <nav id="filter-controls" class="max-w-screen-lg mx-auto pt-8 p-4">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-semibold">Available Opportunities</h2>
+        <div class="badge badge-ghost p-3">
+            <span id="active-jobs-badge" class="font-medium">8</span>&nbsp;Jobs Found
+        </div>
+      </div>
+
+      <div class="flex gap-2 max-w-sm">
+        <button id="filter-all-btn" class="btn btn-sm md:btn-md flex-1 bg-[%3B82F6] text-black hover:bg-blue-500">All</button>
+        <button id="filter-interview-btn" class="btn btn-sm md:btn-md flex-1 btn-outline btn-info">Interviewing</button>
+        <button id="filter-rejected-btn" class="btn btn-sm md:btn-md flex-1 btn-outline btn-error">Rejected</button>
+      </div>
+    </nav>
+
+    <main id="job-list-grid" class="max-w-screen-lg mx-auto pt-6 p-4 space-y-8">
+
+      <article class="job-card bg-slate-50 border border-slate-200 p-6 rounded-xl shadow-sm hover:bg-blue-50">
+        <div class="flex justify-between items-start">
+          <div class="header-info">
+            <h3 class="text-xl font-bold text-slate-900">Mobile First Corp</h3>
+            <p class="text-[#64748B] font-medium ">React Native Developer</p>
+          </div>
+          <button class="delete-job-btn text-slate-400 hover:text-red-500 transition-colors" aria-label="Delete Application">
+            <i class="fa-solid fa-trash-can text-lg"></i>
+          </button>
+        </div>
+
+        <ul class="flex gap-4 mt-4 text-sm text-slate-500 flex-wrap">
+          <li><i class="fa-solid fa-location-dot mr-1"></i> Remote</li>
+          <li><i class="fa-solid fa-briefcase mr-1"></i> Full-time</li>
+          <li class="text-green-600 font-semibold"><i class="fa-solid fa-money-bill-wave mr-1"></i> $130k - $175k</li>
+        </ul>
+
+        <div class="description-area mt-6">
+          <button type="button" class="application-status-btn btn btn-sm mb-3 no-animation cursor-default">
+            Status: Not Applied
+          </button>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.
+          </p>
+        </div>
+
+        <div class="action-footer mt-6 flex gap-3">
+          <button type="button" class="mark-interview-btn btn btn-outline btn-success btn-sm flex-1">
+            Move to Interview
+          </button>
+          <button type="button" class="mark-rejected-btn btn btn-outline btn-error btn-sm flex-1">
+            Mark Rejected
+          </button>
+        </div>
+      </article>
+
+       <article class="job-card bg-slate-50 border border-slate-200 p-6 rounded-xl shadow-sm hover:bg-blue-50">
+        <div class="flex justify-between items-start">
+          <div class="header-info">
+            <h3 class="text-xl font-bold text-slate-900">WebFlow Agency</h3>
+            <p class="text-[#64748B] font-medium ">Web Designer & Developer</p>
+          </div>
+          <button class="delete-job-btn text-slate-400 hover:text-red-500 transition-colors" aria-label="Delete Application">
+            <i class="fa-solid fa-trash-can text-lg"></i>
+          </button>
+        </div>
+
+        <ul class="flex gap-4 mt-4 text-sm text-slate-500 flex-wrap">
+          <li><i class="fa-solid fa-location-dot mr-1"></i> Los Angeles, CA</li>
+          <li><i class="fa-solid fa-briefcase mr-1"></i> Part-time</li>
+          <li class="text-green-600 font-semibold"><i class="fa-solid fa-money-bill-wave mr-1"></i> $175k</li>
+        </ul>
+
+        <div class="description-area mt-6">
+          <button type="button" class="application-status-btn btn btn-sm mb-3 no-animation cursor-default">
+            Status: Not Applied
+          </button>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.
+          </p>
+        </div>
+
+        <div class="action-footer mt-6 flex gap-3">
+          <button type="button" class="mark-interview-btn btn btn-outline btn-success btn-sm flex-1">
+            Move to Interview
+          </button>
+          <button type="button" class="mark-rejected-btn btn btn-outline btn-error btn-sm flex-1">
+            Mark Rejected
+          </button>
+        </div>
+      </article>
+
+
+      <article class="job-card bg-slate-50 border border-slate-200 p-6 rounded-xl shadow-sm hover:bg-blue-50">
+        <div class="flex justify-between items-start">
+          <div class="header-info">
+            <h3 class="text-xl font-bold text-slate-900">WebFlow Agency</h3>
+            <p class="text-[#64748B] font-medium ">Web Designer & Developer</p>
+          </div>
+          <button class="delete-job-btn text-slate-400 hover:text-red-500 transition-colors" aria-label="Delete Application">
+            <i class="fa-solid fa-trash-can text-lg"></i>
+          </button>
+        </div>
+
+        <ul class="flex gap-4 mt-4 text-sm text-slate-500 flex-wrap">
+          <li><i class="fa-solid fa-location-dot mr-1"></i> Los Angeles, CA</li>
+          <li><i class="fa-solid fa-briefcase mr-1"></i> Part-time</li>
+          <li class="text-green-600 font-semibold"><i class="fa-solid fa-money-bill-wave mr-1"></i> $175k</li>
+        </ul>
+
+        <div class="description-area mt-6">
+          <button type="button" class="application-status-btn btn btn-sm mb-3 no-animation cursor-default">
+            Status: Not Applied
+          </button>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.
+          </p>
+        </div>
+
+        <div class="action-footer mt-6 flex gap-3">
+          <button type="button" class="mark-interview-btn btn btn-outline btn-success btn-sm flex-1">
+            Move to Interview
+          </button>
+          <button type="button" class="mark-rejected-btn btn btn-outline btn-error btn-sm flex-1">
+            Mark Rejected
+          </button>
+        </div>
+      </article>
+
+      </main>
+
+    <section id="empty-state-container" class="hidden max-w-screen-lg mx-auto px-4 py-20">
+      <div class="flex flex-col items-center justify-center bg-slate-100 rounded-2xl py-16 text-center">
+        <i class="fa-solid fa-file-circle-xmark text-6xl text-slate-300 mb-4"></i>
+        <h2 class="text-2xl font-bold text-slate-800">No jobs available</h2>
+        <p class="text-slate-500">Check back soon for new job opportunities</p>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  
 </body>
 </html>
