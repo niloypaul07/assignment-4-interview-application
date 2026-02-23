@@ -24,7 +24,7 @@
       <h1 class="text-2xl font-bold mb-6 text-[#002C5C]">Job Application Tracker</h1>
 
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <button type="button" class="stat-card btn flex flex-col h-auto py-4 bg-white border-slate-200 hover:bg-blue-50">
+        <button type="button" class="stat-card btn flex flex-col align-bottom h-auto py-4 bg-white border-slate-200 hover:bg-blue-50">
           <span class="text-sm uppercase tracking-wider text-slate-500">Total</span>
           <span id="stat-total-count" class="text-2xl font-bold">8</span>
         </button>
@@ -40,14 +40,16 @@
         </button>
       </div>
     </header>
+    <hr class="max-w-screen-lg mx-auto pt-8 p-4 border-[#E6E7E9]">
 
-    <nav id="filter-controls" class="max-w-screen-lg mx-auto pt-8 p-4">
+    <nav id="filter-controls" class="max-w-screen-lg mx-auto pt-6 p-4">
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-semibold">Available Opportunities</h2>
         <div class="badge badge-ghost p-3">
             <span id="active-jobs-badge" class="font-medium">8</span>&nbsp;Jobs Found
         </div>
       </div>
+      
 
       <div class="flex gap-2 max-w-sm">
         <button id="filter-all-btn" class="btn btn-sm md:btn-md flex-1 bg-[#3B82F6] text-black hover:bg-blue-500">All</button>
@@ -358,7 +360,8 @@
 
     <section id="empty-state-container" class="hidden max-w-screen-lg mx-auto px-4 py-20">
       <div class="flex flex-col items-center justify-center bg-slate-100 rounded-2xl py-16 text-center">
-        <i class="fa-solid fa-file-circle-xmark text-6xl text-slate-300 mb-4"></i>
+        <img src="./jobs.png" alt="" srcset="">
+        <!-- <i class="fa-solid fa-file-circle-xmark text-6xl text-slate-300 mb-4"></i> -->
         <h2 class="text-2xl font-bold text-slate-800">No jobs available</h2>
         <p class="text-slate-500">Check back soon for new job opportunities</p>
       </div>
